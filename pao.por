@@ -246,6 +246,9 @@ programa
 		}
 		salvarValores(auxReal,matzTotal,cod,total,arquivo,caminhoReTotal,caminhoReQuantidade,textoLinha,auxInt,quantidade,matzQuantidade,matzEstoque,caminhoQuantidade)
 		pare
+		caso 142536:
+		escreva("")
+		pare
 		caso contrario://							Tratamento de erro
 		inicio()
 	}
@@ -381,8 +384,8 @@ programa
 			totalCaixa=valor1+valor2//calculando o valor total do caixa
 		}
 		//									calculando o lucro total
-		
-		escreva("\nTotal em caixa\t\t\t\t\t\t   R$",totalCaixa,"\n")//imprimindo o valor total do caixa
+		escreva("===================================================================\n")
+		escreva("Total em caixa\t\t\t\t\t\t   R$",totalCaixa,"\n")//imprimindo o valor total do caixa
 		escreva("-------------------------------------------------------------------\n\n")
 	}
 	funcao vazio relatorioFinal(cadeia matzEstoque[][],cadeia matzTotal[][],cadeia matzQuantidade[][]){
@@ -414,10 +417,11 @@ programa
 			totalCaixa=valor1+valor2//calculando o valor total do caixa
 		}
 		//	 								calculando o lucro total
-		
-		escreva("\nTotal em caixa\t\t\t\t\t\t   R$",totalCaixa,"\n")//imprimindo o valor total do caixa
-		escreva("Custo total\t\t\t\t\t\t   R$",custoTotal,"\n")
-		escreva("Lucro total\t\t\t\t\t\t   R$",totalCaixa-custoTotal,"\n")
+
+		escreva("===================================================================\n")
+		escreva("Total em caixa\t\t\t\t\t\t     R$",totalCaixa,"\n")//imprimindo o valor total do caixa
+		escreva("Custo total\t\t\t\t\t\t     R$",custoTotal,"\n")
+		escreva("Lucro total\t\t\t\t\t\t     R$",totalCaixa-custoTotal,"\n")
 		escreva("-------------------------------------------------------------------\n\n")
 	}
 }
@@ -426,9 +430,9 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 21900; 
+ * @POSICAO-CURSOR = 19901; 
  * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = ;
+ * @SIMBOLOS-INSPECIONADOS = {matzEstoque, 31, 8, 11}-{matzQuantidade, 31, 59, 14}-{matzTotal, 31, 80, 9};
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
  */
