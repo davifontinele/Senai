@@ -255,17 +255,49 @@ programa
 	}
 	}//<--FIM DA FUNCAO INICIO
 	funcao vazio titulo(){
-		escreva("---------- PADARIA PÃO QUENTE ----------\n\n")
+		escreva(" ________________________________________________________________________________\n")
+    		escreva("|                                                                                |\n")
+		escreva("+---------------------------- PADARIA PÃO QUENTE --------------------------------+\n")
 	}
 	funcao vazio menu(){
-		escreva("(1)Cadastrar Produtos\n(2)Realizar Vendas\n(3)Relatório Atual\n(4)Fechar Caixa e Sair\n->")
+		escreva("|________________________________________________________________________________|\n")
+    		escreva("|                                                                                |\n")
+    		escreva("|                                                                                |\n")
+    		escreva("|   ___    _____________________ \t       ___     ___________________       |\n")
+    		escreva("|  | 1 |  | Cadastrar Produtos. |\t      | 2 |   | Realizar Vendas.  |      |\n")
+    		escreva("|   ¨¨¨    ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨ \t       ¨¨¨     ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨       |\n")
+    		escreva("|   ___    ___________________ \t\t       ___     _______________________   |\n")
+    		escreva("|  | 3 |  | Relatório Atual.  |\t\t      | 4 |   | Fechar Caixa e Sair.  |  |\n")
+    		escreva("|   ¨¨     ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨ \t\t       ¨¨¨     ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨   |\n")
+    		escreva("+--------------------------------------------------------------------------------+")
+    		escreva("\n\n->")
 	}
 	funcao vazio menuProdutos(cadeia matzEstoque[][]){
-		escreva("COD | NOME\n")
-		para(inteiro l=0;l<5;l++){
-			escreva(" ",l,"  | ",matzEstoque[l][0],"\n")
-		}
-		escreva("\n")
+		escreva(" ¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬\n")
+		escreva("|                                 |\n")
+		escreva("|        TABELA DE CÓDIGOS        |\n")
+		escreva("|                                 |\n")
+		escreva("|¨¨¨¨¨¨¨¨¨¨¨¨¨|¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨|\n")
+		escreva("|  ________   |   _________       |\n")
+		escreva("| | Código |  |  | Produto |      |\n")
+		escreva("|  --------   |   ---------       |\n")
+		escreva("|_____________|___________________|\n")
+		escreva("|    ____     |   _____________   | \n")
+		escreva("|   | 00 |    |  | ", matzEstoque[0][0],"\n")
+		escreva("|    ====     |   =============   |\n")
+		escreva("|    ____     |   _____________   | \n")
+		escreva("|   | 01 |    |  | ", matzEstoque[1][0],"\n")
+          escreva("|    ====     |   =============   |\n")
+          escreva("|    ____     |   ____________    |\n")
+		escreva("|   | 02 |    |  | ", matzEstoque[2][0],"\n")
+		escreva("|    ====     |   =============   |\n")
+          escreva("|    ____     |   ____________    | \n")
+		escreva("|   | 03 |    |  | ", matzEstoque[3][0],"\n")
+          escreva("|    ====     |   ============    |\n")
+          escreva("|    ____     |   ____________    | \n")
+		escreva("|   | 04 |    |  | ", matzEstoque[4][0],"\n")
+          escreva("|    ====     |   ============    | \n")
+          escreva("|_____________|___________________|\n")
 	}
 	funcao vazio viaDinheiro(inteiro quantidade,inteiro cod,real total,cadeia matzEstoque[][]){
 		escreva("PADARIA PÃO QUENTE\t\t\tFONTCARD\n")
@@ -425,6 +457,17 @@ programa
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
  * @POSICAO-CURSOR = 19973; 
+ * @PONTOS-DE-PARADA = ;
+ * @SIMBOLOS-INSPECIONADOS = {matzEstoque, 31, 8, 11}-{matzQuantidade, 31, 59, 14}-{matzTotal, 31, 80, 9};
+ * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
+ * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
+ */
+/* $$$ Portugol Studio $$$ 
+ * 
+ * Esta seção do arquivo guarda informações do Portugol Studio.
+ * Você pode apagá-la se estiver utilizando outro editor.
+ * 
+ * @POSICAO-CURSOR = 15752; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = {matzEstoque, 31, 8, 11}-{matzQuantidade, 31, 59, 14}-{matzTotal, 31, 80, 9};
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
