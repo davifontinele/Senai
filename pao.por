@@ -447,15 +447,18 @@ programa
 		escreva("|Codigo|     Nome      Qtd/vendida Tot/vendido Em Estoque Tot/custo \n")
 		//								imprimindo o relatorio
 		para(inteiro l=0;l<5;l++){
-			totalVendas=tp.cadeia_para_real(matzTotal[l][1])//recebendo o valor total de vendas do produto
+			//totalVendas=tp.cadeia_para_real(matzTotal[l][1])//recebendo o valor total de vendas do produto
 			estoque=tp.cadeia_para_inteiro(matzEstoque[l][3],10)//recebendo o valor total do estoque
 			custoProd=tp.cadeia_para_real(matzEstoque[l][2])//recebendo o valor do custo de cada produto
-			escreva("|  ",l,"   |     ",matzEstoque[l][0],"\t    ",matzQuantidade[l][1],"           ",matzTotal[l][1],"        ",matzEstoque[l][3],"      ",totalVendas-(custoProd*estoque),"   \n")
+			escreva("|  ",l,"   |     ",matzEstoque[l][0],"\t    ",matzQuantidade[l][1],"           ",matzTotal[l][1],"        ",matzEstoque[l][3],"      ",custoProd*estoque,"   \n")
 		}
 		//									calculando o custo total
 		para(inteiro l=0;l<5;l++){
+			real valTemp
+			estoque=tp.cadeia_para_inteiro(matzEstoque[l][3],10)//recebendo o valor total do estoque
 			custoProd=tp.cadeia_para_real(matzEstoque[l][2])//recebendo o valor do custo de cada produto
-			custoTotal=custoProd*tp.cadeia_para_inteiro(matzQuantidade[l][1],10)
+			valTemp=(custoProd*estoque)*5
+			custoTotal=valTemp
 		}
 		//									calculos do saldo do caixa
 		para(inteiro l=0;l<5;l++){//loops de utilizados para pegar o valor do total das vendas de cada produto
