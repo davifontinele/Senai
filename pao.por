@@ -87,7 +87,6 @@ programa
 	}
 	arq.fechar_arquivo(arquivo)//fechando o arquivo
 	//											Imprimindo o menu de opcao
-	titulo()
 	menu()
 	leia(opcao)
 	limpa()
@@ -183,7 +182,15 @@ programa
 		total=quantidade*auxReal//calculando o total com base no valor unitario (total = quantidade x valor unitario)
 		faca{
 			titulo()
-			escreva("Informe a forma de pagamento:\n(1)Dinheiro\n(2)Pix\n(3)Cartão\n->")
+			escreva("                            ___   __________\n")
+		     escreva("                           | 1 | | Dinheiro |\n")
+               escreva("                            ¨¨¨   ¨¨¨¨¨¨¨¨¨¨\n")
+               escreva(" ____________________       ___   _____\n")
+		     escreva("| FORMA DE PAGAMENTO |     | 2 | | Pix |\n")
+		     escreva(" ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨       ¨¨¨   ¨¨¨¨¨\n")
+		     escreva("                            ___   ________\n")
+		     escreva("                           | 3 | | Cartão |\n")
+		     escreva("                            ¨¨¨   ¨¨¨¨¨¨¨¨            -+->\n")
 			leia(opcao)
 			limpa()
 		}enquanto(opcao<1 ou opcao>3)//loop "anti otario" caso o usuario nao informe uma escolha valida
@@ -217,8 +224,23 @@ programa
 			caso 3://									Pagamento em cartao
 			faca{
 			titulo()
-			escreva("Informe o tipo de pagamento:\n")
-			escreva("(1)Debito\n(2)Crédito\n->")
+			escreva("       ___________________________\n")
+               escreva("      |                           |\n")
+               escreva("      |           CIELO           |\n")
+		     escreva("      |   _____________________   |\n")
+		     escreva("      |  |                     |  |\n")
+		     escreva("      |  |¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨|  |\n")
+		     escreva("      |  |   ___   ________    |  |\n")
+		     escreva("      |  |  | 1 | | Debito |   |  |\n")
+		     escreva("      |  |   ¨¨¨   ¨¨¨¨¨¨¨¨    |  |\n")
+		     escreva("      |  |   ___   _________   |  |\n")
+		     escreva("      |  |  | 2 | | Crédito |  |  |\n")
+		     escreva("      |  |   ¨¨¨   ¨¨¨¨¨¨¨¨¨   |  |\n")
+               escreva("      |  +---------------------+  |\n")
+               escreva("      |                           |\n")
+               escreva("      |                           |\n")
+               escreva("      |___________________________|\n\n")
+               escreva("-+->\n")
 			leia(opcao)
 			limpa()
 			}enquanto(opcao<1 ou opcao>2)
@@ -255,12 +277,13 @@ programa
 	}
 	}//<--FIM DA FUNCAO INICIO
 	funcao vazio titulo(){
+		escreva("+---------- PADARIA PÃO QUENTE ----------+\n")
+	}
+	funcao vazio menu(){
 		escreva(" ________________________________________________________________________________\n")
     		escreva("|                                                                                |\n")
 		escreva("+---------------------------- PADARIA PÃO QUENTE --------------------------------+\n")
-	}
-	funcao vazio menu(){
-		escreva("|________________________________________________________________________________|\n")
+    		escreva("|________________________________________________________________________________|\n")
     		escreva("|                                                                                |\n")
     		escreva("|                                                                                |\n")
     		escreva("|   ___    _____________________ \t       ___     ___________________       |\n")
@@ -467,7 +490,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 15752; 
+ * @POSICAO-CURSOR = 5610; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = {matzEstoque, 31, 8, 11}-{matzQuantidade, 31, 59, 14}-{matzTotal, 31, 80, 9};
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
