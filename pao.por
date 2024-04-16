@@ -246,8 +246,9 @@ programa
 		}
 		salvarValores(auxReal,matzTotal,cod,total,arquivo,caminhoReTotal,caminhoReQuantidade,textoLinha,auxInt,quantidade,matzQuantidade,matzEstoque,caminhoQuantidade)
 		pare
-		caso 142536:
-		escreva("")
+		caso 61514205:
+		escreva("Para de curiar o código safado!\n\n")
+		troll()
 		pare
 		caso contrario://							Tratamento de erro
 		inicio()
@@ -375,18 +376,13 @@ programa
 		}
 		//									calculos do saldo do caixa
 		para(inteiro l=0;l<5;l++){//loops de utilizados para pegar o valor do total das vendas de cada produto
-			para(inteiro i=1;i<5;i++){
-				//recebendo o valor total de cada produto
-				valor1=tp.cadeia_para_real(matzTotal[l][1])
-				valor2=tp.cadeia_para_real(matzTotal[i][1])
-				//-----
-			}
-			totalCaixa=valor1+valor2//calculando o valor total do caixa
+			valor1=tp.cadeia_para_real(matzTotal[l][1])
+			totalCaixa=valor1+totalCaixa//calculando o valor total do caixa
 		}
 		//									calculando o lucro total
 		escreva("===================================================================\n")
 		escreva("Total em caixa\t\t\t\t\t\t   R$",totalCaixa,"\n")//imprimindo o valor total do caixa
-		escreva("-------------------------------------------------------------------\n\n")
+		escreva("===================================================================\n\n")
 	}
 	funcao vazio relatorioFinal(cadeia matzEstoque[][],cadeia matzTotal[][],cadeia matzQuantidade[][]){
 		real totalVendas,custoProd,valor1=0.0,valor2=0.0,totalCaixa=0.0,custoTotal=0.0
@@ -408,13 +404,8 @@ programa
 		}
 		//									calculos do saldo do caixa
 		para(inteiro l=0;l<5;l++){//loops de utilizados para pegar o valor do total das vendas de cada produto
-			para(inteiro i=1;i<5;i++){
-				//recebendo o valor total de cada produto
-				valor1=tp.cadeia_para_real(matzTotal[l][1])
-				valor2=tp.cadeia_para_real(matzTotal[i][1])
-				//-----
-			}
-			totalCaixa=valor1+valor2//calculando o valor total do caixa
+			valor1=tp.cadeia_para_real(matzTotal[l][1])
+			totalCaixa=valor1+totalCaixa//calculando o valor total do caixa
 		}
 		//	 								calculando o lucro total
 
@@ -422,7 +413,10 @@ programa
 		escreva("Total em caixa\t\t\t\t\t\t     R$",totalCaixa,"\n")//imprimindo o valor total do caixa
 		escreva("Custo total\t\t\t\t\t\t     R$",custoTotal,"\n")
 		escreva("Lucro total\t\t\t\t\t\t     R$",totalCaixa-custoTotal,"\n")
-		escreva("-------------------------------------------------------------------\n\n")
+		escreva("===================================================================\n\n")
+	}
+	funcao vazio troll(){
+		escreva("░░░░░▄▄▄▄▀▀▀▀▀▀▀▀▄▄▄▄▄▄░░░░░░░\n░░░░░█░░░░▒▒▒▒▒▒▒▒▒▒▒▒░░▀▀▄░░░░\n░░░░█░░░▒▒▒▒▒▒░░░░░░░░▒▒▒░░█░░░\n░░░█░░░░░░▄██▀▄▄░░░░░▄▄▄░░░░█░░\n░▄▀▒▄▄▄▒░█▀▀▀▀▄▄█░░░██▄▄█░░░░█░\n█░▒█▒▄░▀▄▄▄▀░░░░░░░░█░░░▒▒▒▒▒░█\n█░▒█░█▀▄▄░░░░░█▀░░░░▀▄░░▄▀▀▀▄▒█\n░█░▀▄░█▄░█▀▄▄░▀░▀▀░▄▄▀░░░░█░░█░\n░░█░░░▀▄▀█▄▄░█▀▀▀▄▄▄▄▀▀█▀██░█░░\n░░░█░░░░██░░▀█▄▄▄█▄▄█▄████░█░░░\n░░░░█░░░░▀▀▄░█░░░█░█▀██████░█░░\n░░░░░▀▄░░░░░▀▀▄▄▄█▄█▄█▄█▄▀░░█░░\n░░░░░░░▀▄▄░▒▒▒▒░░░░░░░░░░▒░░░█░\n░░░░░░░░░░▀▀▄▄░▒▒▒▒▒▒▒▒▒▒░░░░█░\n░░░░░░░░░░░░░░▀▄▄▄▄▄░░░░░░░░█░░")
 	}
 }
 /* $$$ Portugol Studio $$$ 
@@ -430,7 +424,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 19901; 
+ * @POSICAO-CURSOR = 19973; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = {matzEstoque, 31, 8, 11}-{matzQuantidade, 31, 59, 14}-{matzTotal, 31, 80, 9};
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
