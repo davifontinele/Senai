@@ -116,7 +116,7 @@ programa
 			
 			faca{
 			titulo()
-			escreva("Informe o custo do produto (",nome,")\n->R$")
+			escreva("Informe o custo do produto (",nome,")\n->")
 			leia(custo)
 			}enquanto(custo<0)//loop de repeticao utilizado para que o usuario informe um valor (R$) do custo do produto que seja maior que 0
 			matzEstoque[l][3]=tp.real_para_cadeia(custo)//armazenando o valor (R$) do custo na matriz
@@ -177,9 +177,8 @@ programa
 			leia(quantidade)
 			limpa()
 		}
-		auxReal=tp.cadeia_para_real(matzEstoque[cod][1])//pegando o valor do custo unitario do produto (cadeia) e transformando em real
+		auxReal=tp.cadeia_para_real(matzEstoque[cod][2])//pegando o valor do custo unitario do produto (cadeia) e transformando em real
 		total=quantidade*auxReal//calculando o total com base no valor unitario (total = quantidade x valor unitario)
-		auxInt=tp.cadeia_para_inteiro(matzEstoque[cod][3],10)
 		faca{
 			titulo()
 			tipoPag()
@@ -245,7 +244,7 @@ programa
 		salvarValores(auxReal,matzTotal,cod,total,arquivo,caminhoReTotal,caminhoReQuantidade,textoLinha,auxInt,quantidade,matzQuantidade,matzEstoque,caminhoQuantidade)
 		pare
 		caso 61514205:
-		escreva("Não há nada ainda aqui, volte depois!\n\n")
+		escreva("Não há nada aqui volte depois!\n\n")
 		troll()
 		pare
 		caso contrario://							Tratamento de erro
@@ -299,7 +298,7 @@ programa
     		escreva("|  | 3 |  | Relatório Atual.  |\t\t      | 4 |   | Fechar Caixa e Sair.  |  |\n")
     		escreva("|   ¨¨     ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨ \t\t       ¨¨¨     ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨   |\n")
     		escreva("+--------------------------------------------------------------------------------+")
-    		escreva("\n->")
+    		escreva("\n\n->")
 	}
 	funcao vazio menuProdutos(cadeia matzEstoque[][]){
 		escreva(" ¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬\n")
@@ -333,7 +332,7 @@ programa
 		escreva("CNPJ: 77.161.014/0001-11\n")
 		escreva("\t\t\tVIA DO CLIENTE\n")
 		escreva("codigo\tnome\tquantidade\tvalor UNI\n")
-		escreva("",cod,"\t",matzEstoque[cod][0],"\t   ",quantidade,"\t           ",matzEstoque[cod][1],"\n")
+		escreva("",cod,"\t",matzEstoque[cod][0],"\t   ",quantidade,"\t           ",matzEstoque[cod][2],"\n")
 		/*legenda da nota
 		 * escreva("",codigo do produto," ",nome do produto," ",quantidade vendida," ",valor unitario,"\n")
 		 */
@@ -346,7 +345,7 @@ programa
 		escreva("CNPJ: 77.161.014/0001-11\n")
 		escreva("\t\t\tVIA DO CLIENTE\n")
 		escreva("codigo\tnome\tquantidade\tvalor UNI\n")
-		escreva("",cod,"\t",matzEstoque[cod][0],"\t   ",quantidade,"\t           ",matzEstoque[cod][1],"\n")
+		escreva("",cod,"\t",matzEstoque[cod][0],"\t   ",quantidade,"\t           ",matzEstoque[cod][2],"\n")
 		/*legenda da nota
 		 * escreva("",codigo do produto," ",nome do produto," ",quantidade vendida," ",valor unitario,"\n")
 		 */
@@ -359,7 +358,7 @@ programa
 		escreva("CNPJ: 77.161.014/0001-11\n")
 		escreva("\t\t\tVIA DO CLIENTE\n")
 		escreva("codigo\tnome\tquantidade\tvalor UNI\n")
-		escreva("",cod,"\t",matzEstoque[cod][0],"\t   ",quantidade,"\t           ",matzEstoque[cod][1],"\n")
+		escreva("",cod,"\t",matzEstoque[cod][0],"\t   ",quantidade,"\t           ",matzEstoque[cod][2],"\n")
 		/*legenda da nota
 		 * escreva("",codigo do produto," ",nome do produto," ",quantidade vendida," ",valor unitario,"\n")
 		 */
@@ -372,7 +371,7 @@ programa
 		escreva("CNPJ: 77.161.014/0001-11\n")
 		escreva("\t\t\tVIA DO CLIENTE\n")
 		escreva("codigo\tnome\tquantidade\tvalor UNI\n")
-		escreva("",cod,"\t",matzEstoque[cod][0],"\t   ",quantidade,"\t           ",matzEstoque[cod][1],"\n")
+		escreva("",cod,"\t",matzEstoque[cod][0],"\t   ",quantidade,"\t           ",matzEstoque[cod][2],"\n")
 		/*legenda da nota
 		 * escreva("",codigo do produto," ",nome do produto," ",quantidade vendida," ",valor unitario,"\n")
 		 */
@@ -408,6 +407,10 @@ programa
 			}
 			arq.fechar_arquivo(arquivo)
 			//-----
+			//amazenando o novo valor da quantidade de produtos na matrizEstoque e depois no arquivo
+			auxInt=tp.cadeia_para_inteiro(matzEstoque[cod][3],10)//pegando o valor da quantidade ja amazenada na matriz e transformando em inteiro
+			auxInt=auxInt-quantidade//fazendo o reajusto do valor atual da quantidade (quantidade atual=quantidade antiga - quantidade vendida)
+			matzEstoque[cod][3]=tp.inteiro_para_cadeia(auxInt,10)//amazenando o valor atualizado na matriz
 			
 			//salvando a alteracao no arquivo
 			arquivo=arq.abrir_arquivo(caminhoQuantidade,arq.MODO_ESCRITA)//abrindo o arquivo da quantidade
@@ -423,12 +426,13 @@ programa
 		inteiro estoque
 		escreva("-------------------------------------------------------------------\n")
 		escreva("\t\t\t  RELATÓRIO\n\n")
-		escreva("|Codigo|     Nome      Qtd/vendida Tot/vendido\n")
+		escreva("|Codigo|     Nome      Qtd/vendida Tot/vendido Em Estoque\n")
 		//								imprimindo o relatorio
 		para(inteiro l=0;l<5;l++){
+			totalVendas=tp.cadeia_para_real(matzTotal[l][1])//recebendo o valor total de vendas do produto
 			estoque=tp.cadeia_para_inteiro(matzEstoque[l][3],10)//recebendo o valor total do estoque
 			custoProd=tp.cadeia_para_real(matzEstoque[l][2])//recebendo o valor do custo de cada produto
-			escreva("|  ",l,"   |     ",matzEstoque[l][0],"\t    ",matzQuantidade[l][1],"           ",matzTotal[l][1],"\n")
+			escreva("|  ",l,"   |     ",matzEstoque[l][0],"\t    ",matzQuantidade[l][1],"           ",matzTotal[l][1],"        ",matzEstoque[l][3],"\n")
 		}
 		//									calculos do saldo do caixa
 		para(inteiro l=0;l<5;l++){//loops de utilizados para pegar o valor do total das vendas de cada produto
@@ -436,30 +440,30 @@ programa
 			totalCaixa=valor1+totalCaixa//calculando o valor total do caixa
 		}
 		//									calculando o lucro total
-		escreva("===========================================\n")
-		escreva("Total em caixa\t\t\t      R$",totalCaixa,"\n")//imprimindo o valor total do caixa
-		escreva("===========================================\n\n")
+		escreva("===================================================================\n")
+		escreva("Total em caixa\t\t\t\t\t\t   R$",totalCaixa,"\n")//imprimindo o valor total do caixa
+		escreva("===================================================================\n\n")
 	}
 	funcao vazio relatorioFinal(cadeia matzEstoque[][],cadeia matzTotal[][],cadeia matzQuantidade[][]){
 		real totalVendas,custoProd,valor1=0.0,valor2=0.0,totalCaixa=0.0,custoTotal=0.0
-		inteiro estoque,aux
-		cadeia matzCusto[5][2]
+		inteiro estoque
 		escreva("-------------------------------------------------------------------\n")
 		escreva("\t\t\t  RELATÓRIO\n\n")
-		escreva("|Codigo|     Nome      Qtd/vendida Tot/vendido Em Estoque\n")
+		escreva("|Codigo|     Nome      Qtd/vendida Tot/vendido Em Estoque Tot/custo \n")
 		//								imprimindo o relatorio
 		para(inteiro l=0;l<5;l++){
-			escreva("|  ",l,"   |     ",matzEstoque[l][0],"\t    ",matzQuantidade[l][1],"           ",matzTotal[l][1],"        ",matzEstoque[l][3],"\n")
+			//totalVendas=tp.cadeia_para_real(matzTotal[l][1])//recebendo o valor total de vendas do produto
+			estoque=tp.cadeia_para_inteiro(matzEstoque[l][3],10)//recebendo o valor total do estoque
+			custoProd=tp.cadeia_para_real(matzEstoque[l][2])//recebendo o valor do custo de cada produto
+			escreva("|  ",l,"   |     ",matzEstoque[l][0],"\t    ",matzQuantidade[l][1],"           ",matzTotal[l][1],"        ",matzEstoque[l][3],"      ",custoProd*estoque,"   \n")
 		}
 		//									calculando o custo total
 		para(inteiro l=0;l<5;l++){
-			matzCusto[l][0]=matzEstoque[l][2]
-			matzCusto[l][1]=matzEstoque[l][3]
-		}
-		para(inteiro l=0;l<5;l++){
-			valor1=tp.cadeia_para_real(matzCusto[l][0])//custo unitario
-			valor2=tp.cadeia_para_real(matzCusto[l][1])//quantidade estoque
-			custoTotal=custoTotal+(valor1*valor2)
+			real valTemp
+			estoque=tp.cadeia_para_inteiro(matzEstoque[l][3],10)//recebendo o valor total do estoque
+			custoProd=tp.cadeia_para_real(matzEstoque[l][2])//recebendo o valor do custo de cada produto
+			valTemp=(custoProd*estoque)*5
+			custoTotal=valTemp
 		}
 		//									calculos do saldo do caixa
 		para(inteiro l=0;l<5;l++){//loops de utilizados para pegar o valor do total das vendas de cada produto
@@ -468,24 +472,13 @@ programa
 		}
 		//	 								calculando o lucro total
 
-		escreva("=====================================================\n")
-		escreva("Total em caixa\t\t\t\t     R$",totalCaixa,"\n")//imprimindo o valor total do caixa
-		escreva("Custo total\t\t\t\t     R$",custoTotal,"\n")
-		escreva("Lucro total\t\t\t\t     R$",mat.arredondar(totalCaixa-custoTotal,2),"\n")
-		escreva("=====================================================\n\n")
+		escreva("===================================================================\n")
+		escreva("Total em caixa\t\t\t\t\t\t     R$",totalCaixa,"\n")//imprimindo o valor total do caixa
+		escreva("Custo total\t\t\t\t\t\t     R$",custoTotal,"\n")
+		escreva("Lucro total\t\t\t\t\t\t     R$",totalCaixa-custoTotal,"\n")
+		escreva("===================================================================\n\n")
 	}
 	funcao vazio troll(){
 		escreva("░░░░░▄▄▄▄▀▀▀▀▀▀▀▀▄▄▄▄▄▄░░░░░░░\n░░░░░█░░░░▒▒▒▒▒▒▒▒▒▒▒▒░░▀▀▄░░░░\n░░░░█░░░▒▒▒▒▒▒░░░░░░░░▒▒▒░░█░░░\n░░░█░░░░░░▄██▀▄▄░░░░░▄▄▄░░░░█░░\n░▄▀▒▄▄▄▒░█▀▀▀▀▄▄█░░░██▄▄█░░░░█░\n█░▒█▒▄░▀▄▄▄▀░░░░░░░░█░░░▒▒▒▒▒░█\n█░▒█░█▀▄▄░░░░░█▀░░░░▀▄░░▄▀▀▀▄▒█\n░█░▀▄░█▄░█▀▄▄░▀░▀▀░▄▄▀░░░░█░░█░\n░░█░░░▀▄▀█▄▄░█▀▀▀▄▄▄▄▀▀█▀██░█░░\n░░░█░░░░██░░▀█▄▄▄█▄▄█▄████░█░░░\n░░░░█░░░░▀▀▄░█░░░█░█▀██████░█░░\n░░░░░▀▄░░░░░▀▀▄▄▄█▄█▄█▄█▄▀░░█░░\n░░░░░░░▀▄▄░▒▒▒▒░░░░░░░░░░▒░░░█░\n░░░░░░░░░░▀▀▄▄░▒▒▒▒▒▒▒▒▒▒░░░░█░\n░░░░░░░░░░░░░░▀▄▄▄▄▄░░░░░░░░█░░")
 	}
 }
-/* $$$ Portugol Studio $$$ 
- * 
- * Esta seção do arquivo guarda informações do Portugol Studio.
- * Você pode apagá-la se estiver utilizando outro editor.
- * 
- * @POSICAO-CURSOR = 12766; 
- * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = {matzEstoque, 31, 8, 11}-{matzQuantidade, 31, 59, 14}-{matzTotal, 31, 80, 9}-{matzCusto, 446, 9, 9};
- * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
- * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
- */
