@@ -245,7 +245,7 @@ programa
 		salvarValores(auxReal,matzTotal,cod,total,arquivo,caminhoReTotal,caminhoReQuantidade,textoLinha,auxInt,quantidade,matzQuantidade,matzEstoque,caminhoQuantidade)
 		pare
 		caso 61514205:
-		escreva("Não há nada ainda aqui ainda, volte depois!\n\n")
+		escreva("Não há nada ainda aqui, volte depois!\n\n")
 		troll()
 		pare
 		caso contrario://							Tratamento de erro
@@ -483,7 +483,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 12772; 
+ * @POSICAO-CURSOR = 12766; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = {matzEstoque, 31, 8, 11}-{matzQuantidade, 31, 59, 14}-{matzTotal, 31, 80, 9}-{matzCusto, 446, 9, 9};
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
