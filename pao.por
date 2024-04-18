@@ -86,7 +86,7 @@ programa
 	}
 	arq.fechar_arquivo(arquivo)//fechando o arquivo
 	para(inteiro l=0;l<5;l++){
-		vetEstoque[l]=tp.cadeia_para_inteiro(matzEstoque[l][3],10)
+		vetEstoque[l]=tp.cadeia_para_inteiro(matzEstoque[l][3],10)-tp.cadeia_para_inteiro(matzQuantidade[l][1],10)
 	}
 	//											Imprimindo o menu de opcao
 	menu()
@@ -162,18 +162,17 @@ programa
 		escreva("Informe o código do produto:\n->")
 		leia(cod)
 		limpa()
-		}enquanto(cod<0 ou cod>4)//loop de repeticao utilizado para caso o usuario informe um codigo de produto que nao exista ele pedira o codigo novamente
-		
-		se(tp.cadeia_para_inteiro(matzEstoque[cod][3],10)==0){//condicao utilizada para caso o produto desejado nao tenha mais no estoque
+		se(vetEstoque[cod]==0){//condicao utilizada para caso o produto desejado nao tenha mais no estoque
 			escreva("Produto não tem mais no estoque.\n\n")
 			inicio()
 		}
+		}enquanto(cod<0 ou cod>4)//loop de repeticao utilizado para caso o usuario informe um codigo de produto que nao exista ele pedira o codigo novamente
 		auxCad=matzEstoque[cod][0]//auxCad recebendo temporariamente a informacao do nome do produto
 		titulo()
 		escreva("Informe a quantidade vendida do produto ",auxCad,":\n->")
 		leia(quantidade)
 		limpa()
-		enquanto(quantidade<0 ou quantidade>tp.cadeia_para_inteiro(matzEstoque[cod][3],10)){//caso o usuario informe a quantidade a - ou a + do que tem no estoque
+		enquanto(quantidade<=0 ou quantidade>tp.cadeia_para_inteiro(matzEstoque[cod][3],10)){//caso o usuario informe a quantidade a - ou a + do que tem no estoque
 			titulo()
 			escreva("Quantidade informada não existe no estoque.\n")//ira imprimir uma mensagem de erro
 			escreva("Informe a quantidade vendida do produto ",auxCad,":\n->")//logo depois pedindo novamente um novo valor
@@ -183,7 +182,7 @@ programa
 		auxReal=tp.cadeia_para_real(matzEstoque[cod][1])//pegando o valor do custo unitario do produto (cadeia) e transformando em real
 		total=quantidade*auxReal//calculando o total com base no valor unitario (total = quantidade x valor unitario)
 		auxInt=tp.cadeia_para_inteiro(matzEstoque[cod][3],10)
-		vetEstoque[cod]=vetEstoque[cod]-quantidade
+		//vetEstoque[cod]=vetEstoque[cod]-quantidade
 		faca{
 			titulo()
 			tipoPag()
@@ -450,10 +449,10 @@ programa
 		cadeia matzCusto[5][2]
 		escreva("-------------------------------------------------------------------\n")
 		escreva("\t\t\t  RELATÓRIO\n\n")
-		escreva("|Codigo|     Nome      Qtd/vendida Tot/vendido Em Estoque\n")
+		escreva("|Codigo| Em Estoque    Qtd/vendida  Tot/vendido   Nome\n")
 		//								imprimindo o relatorio
 		para(inteiro l=0;l<5;l++){
-			escreva("|  ",l,"   |     ",matzEstoque[l][0],"\t    ",matzQuantidade[l][1],"           ",matzTotal[l][1],"        ",matzEstoque[l][3],"\n")
+			escreva("|  ",l,"   |       ",tp.cadeia_para_inteiro(matzEstoque[l][3],10)-tp.cadeia_para_inteiro(matzQuantidade[l][1],10),"\t    ",matzQuantidade[l][1],"           ",matzTotal[l][1],"      ",matzEstoque[l][0],"\n")
 		}
 		//									calculando o custo total
 		para(inteiro l=0;l<5;l++){
@@ -487,7 +486,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 22438; 
+ * @POSICAO-CURSOR = 9055; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = {matzEstoque, 31, 8, 11}-{matzQuantidade, 31, 59, 14}-{matzTotal, 31, 80, 9}-{vetEstoque, 32, 51, 10};
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
