@@ -486,7 +486,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 23706; 
+ * @POSICAO-CURSOR = 22424; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = {matzEstoque, 31, 8, 11}-{matzQuantidade, 31, 59, 14}-{matzTotal, 31, 80, 9}-{vetEstoque, 32, 51, 10};
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
