@@ -31,12 +31,12 @@ programa
 	cadeia matzEstoque[5][4], nome=" ",textoLinha=" ",auxCad, matzQuantidade[5][2],matzTotal[5][2]
 	inteiro opcao,quantidade=0,cod=0,auxInt=0,arquivo,vetEstoque[5]
 	real preco,custo,total=0.0,trouco=0.0,auxReal=0.0
-	const cadeia caminhoNome="C:/Users/nilda/OneDrive/Área de Trabalho/padaria/nome.txt"//armazenando o caminho do arquivo na variavel
-	const cadeia caminhoPreco="C:/Users/nilda/OneDrive/Área de Trabalho/padaria/preco.txt"//armazenando o caminho do arquivo na variavel
-	const cadeia caminhoCusto="C:/Users/nilda/OneDrive/Área de Trabalho/padaria/custo.txt"//armazenando o caminho do arquivo na variavel
-	const cadeia caminhoQuantidade="C:/Users/nilda/OneDrive/Área de Trabalho/padaria/quantidade.txt"//armazenando o caminho do arquivo na variavel
-	const cadeia caminhoReQuantidade="C:/Users/nilda/OneDrive/Área de Trabalho/padaria/relatorioquantidade.txt"//armazenando o caminho do arquivo na variavel
-	const cadeia caminhoReTotal="C:/Users/nilda/OneDrive/Área de Trabalho/padaria/relatoriototal.txt"//armazenando o caminho do arquivo na variavel
+	const cadeia caminhoNome="C:/Users/Aluno/Desktop/padaria/nome.txt"//armazenando o caminho do arquivo na variavel
+	const cadeia caminhoPreco="C:/Users/Aluno/Desktop/padaria/preco.txt"//armazenando o caminho do arquivo na variavel
+	const cadeia caminhoCusto="C:/Users/Aluno/Desktop/padaria/custo.txt"//armazenando o caminho do arquivo na variavel
+	const cadeia caminhoQuantidade="C:/Users/Aluno/Desktop/padaria/quantidade.txt"//armazenando o caminho do arquivo na variavel
+	const cadeia caminhoReQuantidade="C:/Users/Aluno/Desktop/padaria/relatorioquantidade.txt"//armazenando o caminho do arquivo na variavel
+	const cadeia caminhoReTotal="C:/Users/Aluno/Desktop/padaria/relatoriototal.txt"//armazenando o caminho do arquivo na variavel
 	
 	arquivo=arq.abrir_arquivo(caminhoReQuantidade,arq.MODO_LEITURA)//abrindo o arquivoRelatorio.txt
 	para(inteiro l=0;l<5;l++){//laco de repeticao para ler e puxar os dados do arquivo e armazenar nas devidas linha e colunas da matriz
@@ -424,8 +424,8 @@ programa
 	funcao vazio relatorioTemporario(cadeia matzEstoque[][],cadeia matzTotal[][],cadeia matzQuantidade[][]){
 		real custoProd,valor1=0.0,totalCaixa=0.0
 		inteiro estoque
-		escreva("-------------------------------------------------------------------\n")
-		escreva("\t\t\t  RELATÓRIO\n\n")
+		escreva("-----------------------------------------------\n")
+		escreva("\t\t  RELATÓRIO\n\n")
 		escreva("|Codigo| Tot/vendido  Qtd/vendida       Nome\n")
 		//								imprimindo o relatorio
 		para(inteiro l=0;l<5;l++){
@@ -447,12 +447,12 @@ programa
 		real valor1=0.0,valor2=0.0,totalCaixa=0.0,custoTotal=0.0
 		inteiro estoque,aux
 		cadeia matzCusto[5][2]
-		escreva("-------------------------------------------------------------------\n")
-		escreva("\t\t\t  RELATÓRIO\n\n")
+		escreva("-------------------------------------------------------\n")
+		escreva("\t\t     RELATÓRIO\n\n")
 		escreva("|Codigo| Em Estoque    Qtd/vendida  Tot/vendido   Nome\n")
 		//								imprimindo o relatorio
 		para(inteiro l=0;l<5;l++){
-			escreva("|  ",l,"   |       ",tp.cadeia_para_inteiro(matzEstoque[l][3],10)-tp.cadeia_para_inteiro(matzQuantidade[l][1],10),"\t    ",matzQuantidade[l][1],"           ",matzTotal[l][1],"      ",matzEstoque[l][0],"\n")
+			escreva("|  ",l,"   |       ",tp.cadeia_para_inteiro(matzEstoque[l][3],10)-tp.cadeia_para_inteiro(matzQuantidade[l][1],10),"\t    ",matzQuantidade[l][1],"           ",matzTotal[l][1],"       ",matzEstoque[l][0],"\n")
 		}
 		//									calculando o custo total
 		para(inteiro l=0;l<5;l++){
@@ -481,3 +481,14 @@ programa
 		escreva("░░░░░▄▄▄▄▀▀▀▀▀▀▀▀▄▄▄▄▄▄░░░░░░░\n░░░░░█░░░░▒▒▒▒▒▒▒▒▒▒▒▒░░▀▀▄░░░░\n░░░░█░░░▒▒▒▒▒▒░░░░░░░░▒▒▒░░█░░░\n░░░█░░░░░░▄██▀▄▄░░░░░▄▄▄░░░░█░░\n░▄▀▒▄▄▄▒░█▀▀▀▀▄▄█░░░██▄▄█░░░░█░\n█░▒█▒▄░▀▄▄▄▀░░░░░░░░█░░░▒▒▒▒▒░█\n█░▒█░█▀▄▄░░░░░█▀░░░░▀▄░░▄▀▀▀▄▒█\n░█░▀▄░█▄░█▀▄▄░▀░▀▀░▄▄▀░░░░█░░█░\n░░█░░░▀▄▀█▄▄░█▀▀▀▄▄▄▄▀▀█▀██░█░░\n░░░█░░░░██░░▀█▄▄▄█▄▄█▄████░█░░░\n░░░░█░░░░▀▀▄░█░░░█░█▀██████░█░░\n░░░░░▀▄░░░░░▀▀▄▄▄█▄█▄█▄█▄▀░░█░░\n░░░░░░░▀▄▄░▒▒▒▒░░░░░░░░░░▒░░░█░\n░░░░░░░░░░▀▀▄▄░▒▒▒▒▒▒▒▒▒▒░░░░█░\n░░░░░░░░░░░░░░▀▄▄▄▄▄░░░░░░░░█░░")
 	}
 }
+/* $$$ Portugol Studio $$$ 
+ * 
+ * Esta seção do arquivo guarda informações do Portugol Studio.
+ * Você pode apagá-la se estiver utilizando outro editor.
+ * 
+ * @POSICAO-CURSOR = 23248; 
+ * @PONTOS-DE-PARADA = ;
+ * @SIMBOLOS-INSPECIONADOS = {matzEstoque, 31, 8, 11}-{matzQuantidade, 31, 59, 14}-{matzTotal, 31, 80, 9}-{vetEstoque, 32, 51, 10};
+ * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
+ * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
+ */
