@@ -29,15 +29,15 @@ programa
 	 * (real auxReal) - utilizada como uma variavel auxiliar, podendo fazer qualquer funcao sendo do tipo real
 	 */
 	cadeia matzEstoque[5][4], nome=" ",textoLinha=" ",auxCad, matzQuantidade[5][2],matzTotal[5][2]
-	inteiro opcao,quantidade=0,cod=0,auxInt=0,arquivo
+	inteiro opcao,quantidade=0,cod=0,auxInt=0,arquivo,vetEstoque[5]
 	real preco,custo,total=0.0,trouco=0.0,auxReal=0.0
-	const cadeia caminhoNome="C:/Users/Aluno/Desktop/padaria/nome.txt"//armazenando o caminho do arquivo na variavel
-	const cadeia caminhoPreco="C:/Users/Aluno/Desktop/padaria/preco.txt"//armazenando o caminho do arquivo na variavel
-	const cadeia caminhoCusto="C:/Users/Aluno/Desktop/padaria/custo.txt"//armazenando o caminho do arquivo na variavel
-	const cadeia caminhoQuantidade="C:/Users/Aluno/Desktop/padaria/quantidade.txt"//armazenando o caminho do arquivo na variavel
-	const cadeia caminhoReQuantidade="C:/Users/Aluno/Desktop/padaria/relatorioquantidade.txt"//armazenando o caminho do arquivo na variavel
-	const cadeia caminhoReTotal="C:/Users/Aluno/Desktop/padaria/relatoriototal.txt"//armazenando o caminho do arquivo na variavel
-
+	const cadeia caminhoNome="C:/Users/nilda/OneDrive/Área de Trabalho/padaria/nome.txt"//armazenando o caminho do arquivo na variavel
+	const cadeia caminhoPreco="C:/Users/nilda/OneDrive/Área de Trabalho/padaria/preco.txt"//armazenando o caminho do arquivo na variavel
+	const cadeia caminhoCusto="C:/Users/nilda/OneDrive/Área de Trabalho/padaria/custo.txt"//armazenando o caminho do arquivo na variavel
+	const cadeia caminhoQuantidade="C:/Users/nilda/OneDrive/Área de Trabalho/padaria/quantidade.txt"//armazenando o caminho do arquivo na variavel
+	const cadeia caminhoReQuantidade="C:/Users/nilda/OneDrive/Área de Trabalho/padaria/relatorioquantidade.txt"//armazenando o caminho do arquivo na variavel
+	const cadeia caminhoReTotal="C:/Users/nilda/OneDrive/Área de Trabalho/padaria/relatoriototal.txt"//armazenando o caminho do arquivo na variavel
+	
 	arquivo=arq.abrir_arquivo(caminhoReQuantidade,arq.MODO_LEITURA)//abrindo o arquivoRelatorio.txt
 	para(inteiro l=0;l<5;l++){//laco de repeticao para ler e puxar os dados do arquivo e armazenar nas devidas linha e colunas da matriz
 		matzQuantidade[l][1]=arq.ler_linha(arquivo)
@@ -85,6 +85,9 @@ programa
 		matzEstoque[l][3]=arq.ler_linha(arquivo)
 	}
 	arq.fechar_arquivo(arquivo)//fechando o arquivo
+	para(inteiro l=0;l<5;l++){
+		vetEstoque[l]=tp.cadeia_para_inteiro(matzEstoque[l][3],10)
+	}
 	//											Imprimindo o menu de opcao
 	menu()
 	leia(opcao)
@@ -103,15 +106,15 @@ programa
 			escreva("Informe o quantidade disponivel do prouto (",nome,"):\n->")
 			leia(quantidade)
 			}enquanto(quantidade<0)//loop de repeticao utilizado para que o usuario coloque um numero inteiro maior que 0
-			matzEstoque[l][1]=tp.inteiro_para_cadeia(quantidade,10)//armazenando o valor da quantidade na matriz
+			matzEstoque[l][3]=tp.inteiro_para_cadeia(quantidade,10)//armazenando o valor da quantidade na matriz
 			limpa()
 			
 			faca{
 			titulo()
-			escreva("Informe o valor unitário do produto (",nome,")\n->R$")
+			escreva("Informe o preço unitário do produto (",nome,")\n->R$")
 			leia(preco)
 			}enquanto(preco<0)//loop de repeticao utilizado para que o usuario informe um valor (R$) maior que 0
-			matzEstoque[l][2]=tp.real_para_cadeia(preco)//armazenando o valor (R$) do prosuto na matriz
+			matzEstoque[l][1]=tp.real_para_cadeia(preco)//armazenando o valor (R$) do prosuto na matriz
 			limpa()
 			
 			faca{
@@ -119,7 +122,7 @@ programa
 			escreva("Informe o custo do produto (",nome,")\n->R$")
 			leia(custo)
 			}enquanto(custo<0)//loop de repeticao utilizado para que o usuario informe um valor (R$) do custo do produto que seja maior que 0
-			matzEstoque[l][3]=tp.real_para_cadeia(custo)//armazenando o valor (R$) do custo na matriz
+			matzEstoque[l][2]=tp.real_para_cadeia(custo)//armazenando o valor (R$) do custo na matriz
 			limpa()
 		}
 		arquivo=arq.abrir_arquivo(caminhoNome,arq.MODO_ESCRITA)//abrindo o arquivoNome.txt
@@ -131,21 +134,21 @@ programa
 		
 		arquivo=arq.abrir_arquivo(caminhoQuantidade,arq.MODO_ESCRITA)//abrindo arquivoQuantidade.txt
 		para(inteiro l=0;l<5;l++){//laco de repeticao para armazenar os dados no arquivo
-			textoLinha=matzEstoque[l][1]//informando oque sera escrito no arquivo
+			textoLinha=matzEstoque[l][3]//informando oque sera escrito no arquivo
 			arq.escrever_linha(textoLinha,arquivo)//escrevendo os dados na linha do arquivo
 		}
 		arq.fechar_arquivo(arquivo)//fechando o arquivo
 		
 		arquivo=arq.abrir_arquivo(caminhoPreco,arq.MODO_ESCRITA)//abre arquivoPreco.txt
 		para(inteiro l=0;l<5;l++){//laco de repeticao para armazenar os dados no arquivo
-			textoLinha=matzEstoque[l][2]//informando oque sera escrito no arquivo
+			textoLinha=matzEstoque[l][1]//informando oque sera escrito no arquivo
 			arq.escrever_linha(textoLinha,arquivo)//escrevendo os dados na linha do arquivo
 		}
 		arq.fechar_arquivo(arquivo)//fechando o arquivo
 		
 		arquivo=arq.abrir_arquivo(caminhoCusto,arq.MODO_ESCRITA)//abre arquivoCusto.txt
 		para(inteiro l=0;l<5;l++){//laco de repeticao para armazenar os dados no arquivo
-			textoLinha=matzEstoque[l][3]//informando oque sera escrito no arquivo
+			textoLinha=matzEstoque[l][2]//informando oque sera escrito no arquivo
 			arq.escrever_linha(textoLinha,arquivo)//escrevendo os dados na linha do arquivo
 		}
 		arq.fechar_arquivo(arquivo)//fechando o arquivo
@@ -180,6 +183,7 @@ programa
 		auxReal=tp.cadeia_para_real(matzEstoque[cod][1])//pegando o valor do custo unitario do produto (cadeia) e transformando em real
 		total=quantidade*auxReal//calculando o total com base no valor unitario (total = quantidade x valor unitario)
 		auxInt=tp.cadeia_para_inteiro(matzEstoque[cod][3],10)
+		vetEstoque[cod]=vetEstoque[cod]-quantidade
 		faca{
 			titulo()
 			tipoPag()
@@ -419,7 +423,7 @@ programa
 			//-----
 	}
 	funcao vazio relatorioTemporario(cadeia matzEstoque[][],cadeia matzTotal[][],cadeia matzQuantidade[][]){
-		real totalVendas,custoProd,valor1=0.0,valor2=0.0,totalCaixa=0.0,custoTotal=0.0
+		real custoProd,valor1=0.0,totalCaixa=0.0
 		inteiro estoque
 		escreva("-------------------------------------------------------------------\n")
 		escreva("\t\t\t  RELATÓRIO\n\n")
@@ -441,7 +445,7 @@ programa
 		escreva("===========================================\n\n")
 	}
 	funcao vazio relatorioFinal(cadeia matzEstoque[][],cadeia matzTotal[][],cadeia matzQuantidade[][]){
-		real totalVendas,custoProd,valor1=0.0,valor2=0.0,totalCaixa=0.0,custoTotal=0.0
+		real valor1=0.0,valor2=0.0,totalCaixa=0.0,custoTotal=0.0
 		inteiro estoque,aux
 		cadeia matzCusto[5][2]
 		escreva("-------------------------------------------------------------------\n")
@@ -478,3 +482,14 @@ programa
 		escreva("░░░░░▄▄▄▄▀▀▀▀▀▀▀▀▄▄▄▄▄▄░░░░░░░\n░░░░░█░░░░▒▒▒▒▒▒▒▒▒▒▒▒░░▀▀▄░░░░\n░░░░█░░░▒▒▒▒▒▒░░░░░░░░▒▒▒░░█░░░\n░░░█░░░░░░▄██▀▄▄░░░░░▄▄▄░░░░█░░\n░▄▀▒▄▄▄▒░█▀▀▀▀▄▄█░░░██▄▄█░░░░█░\n█░▒█▒▄░▀▄▄▄▀░░░░░░░░█░░░▒▒▒▒▒░█\n█░▒█░█▀▄▄░░░░░█▀░░░░▀▄░░▄▀▀▀▄▒█\n░█░▀▄░█▄░█▀▄▄░▀░▀▀░▄▄▀░░░░█░░█░\n░░█░░░▀▄▀█▄▄░█▀▀▀▄▄▄▄▀▀█▀██░█░░\n░░░█░░░░██░░▀█▄▄▄█▄▄█▄████░█░░░\n░░░░█░░░░▀▀▄░█░░░█░█▀██████░█░░\n░░░░░▀▄░░░░░▀▀▄▄▄█▄█▄█▄█▄▀░░█░░\n░░░░░░░▀▄▄░▒▒▒▒░░░░░░░░░░▒░░░█░\n░░░░░░░░░░▀▀▄▄░▒▒▒▒▒▒▒▒▒▒░░░░█░\n░░░░░░░░░░░░░░▀▄▄▄▄▄░░░░░░░░█░░")
 	}
 }
+/* $$$ Portugol Studio $$$ 
+ * 
+ * Esta seção do arquivo guarda informações do Portugol Studio.
+ * Você pode apagá-la se estiver utilizando outro editor.
+ * 
+ * @POSICAO-CURSOR = 22438; 
+ * @PONTOS-DE-PARADA = ;
+ * @SIMBOLOS-INSPECIONADOS = {matzEstoque, 31, 8, 11}-{matzQuantidade, 31, 59, 14}-{matzTotal, 31, 80, 9}-{vetEstoque, 32, 51, 10};
+ * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
+ * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
+ */
